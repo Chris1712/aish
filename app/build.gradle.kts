@@ -1,8 +1,6 @@
 plugins {
-    // Apply the org.jetbrains.kotlin.jvm Plugin to add support for Kotlin.
     alias(libs.plugins.jvm)
-
-    // Apply the application plugin to add support for building a CLI application in Java.
+    alias(libs.plugins.graal)
     application
 }
 
@@ -12,6 +10,12 @@ repositories {
 }
 
 dependencies {
+
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.cio)
+    implementation(libs.ktor.client.json)
+    implementation(libs.ktor.client.serialization)
+
     // Use the Kotlin JUnit 5 integration.
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 
@@ -36,4 +40,13 @@ application {
 tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+}
+
+graalvmNative {
+    binaries {
+        named("main") {
+            mainClass.set("personal.chris.aish.AppKt")
+            imageName.set("aish")
+        }
+    }
 }
