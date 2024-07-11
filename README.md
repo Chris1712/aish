@@ -16,8 +16,6 @@ It'll try to return a command that you can inspect and then run.
   - history
   - shell output?
   - extendable here
-- Usage:
-  - `c help me get the sound from this video as an mp3`
 
 
 ## TODO

@@ -11,8 +11,4 @@ fun main() {
     println(App().apiKeyPath)
     println(App().apiKeyContent)
 
-    // Load a file from ~/.secret
-    val secret = System.getenv("HOME") + "/.secret"
-
-
 }
