@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.jvm)
+    alias(libs.plugins.serialization)
     alias(libs.plugins.graal)
     application
 }
@@ -15,6 +16,8 @@ dependencies {
     implementation(libs.ktor.client.cio)
     implementation(libs.ktor.client.json)
     implementation(libs.ktor.client.serialization)
+    implementation(libs.ktor.client.content.negotiation)
+    implementation(libs.ktor.serialization.kotlinx.json)
 
     // Use the Kotlin JUnit 5 integration.
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
