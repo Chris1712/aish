@@ -40,4 +40,5 @@ If we use 100 calls per day at 1000 tokens each that's 50 cents. Seems worthwhil
 
 
 ## TODO
+- We should loop if there is info the model needs? It could ask us to give it the output of git status or something
 - add a module system for prompt building
