@@ -64,7 +64,7 @@ object OpenAIClient {
             temperature = 0.0
         )
 
-        logger.info { "Calling OpenAI with request: $request" }
+        logger.debug { "Calling OpenAI with request: $request" }
         val response: HttpResponse = client.post("https://api.openai.com/v1/chat/completions") {
             header("Authorization", "Bearer $apiKey")
             contentType(ContentType.Application.Json)

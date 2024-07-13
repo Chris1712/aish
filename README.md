@@ -32,8 +32,6 @@ If we use 100 calls per day at 1000 tokens each that's 50 cents. Seems worthwhil
 
 - I don't want a repl, I want something I can invoke
 - Ideally it gets context when I do
-  - pwd
-  - ls
   - git status
   - history
   - shell output?
