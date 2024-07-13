@@ -1,0 +1,38 @@
+[
+  {
+    "name": "personal.chris.aish.OpenAIRequest",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name":"personal.chris.aish.OpenAIRequest",
+    "fields":[{"name":"Companion"}]
+  },
+  {
+    "name":"personal.chris.aish.OpenAIRequest$Companion",
+    "methods":[{"name":"serializer","parameterTypes":[] }]
+  },
+  {
+    "name": "personal.chris.aish.OpenAIResponse",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name":"personal.chris.aish.OpenAIResponse",
+    "fields":[{"name":"Companion"}]
+  },
+  {
+    "name":"personal.chris.aish.OpenAIResponse$Companion",
+    "methods":[{"name":"serializer","parameterTypes":[] }]
+  },
+  {
+    "name": "io.ktor.network.selector.InterestSuspensionsMap",
+    "allDeclaredFields": true,
+    "allDeclaredMethods": true,
+    "allDeclaredConstructors": true
+  }
+]

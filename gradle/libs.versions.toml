@@ -8,7 +8,6 @@ jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 graal = { id = "org.graalvm.buildtools.native", version = "0.10.2" }
 
-
 [libraries]
 kotlin-logging-jvm = { module = "io.github.oshai:kotlin-logging-jvm", version = "7.0.0" }
 slf4j-simple = { module = "org.slf4j:slf4j-simple", version = "1.7.32" }

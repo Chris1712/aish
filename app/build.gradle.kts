@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.serialization)
     alias(libs.plugins.graal)
     application
+
+    id("com.hpe.kraal") version "0.0.15"
 }
 
 repositories {

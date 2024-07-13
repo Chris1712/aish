@@ -18,6 +18,12 @@ To build a native binary, run the task `nativeBuild`, some notes:
 ## Installing
 `cp app/build/native/nativeCompile/aish /usr/local/bin/`
 
+## Costs
+gpt-4o cost $5 for 1M input tokens, $15 for 1M output tokens.
+So 1000 input tokens is 1/2 cent.
+If we use 100 calls per day at 1000 tokens each that's 50 cents. Seems worthwhile!
+
+
 # Goals
 
 - I don't want a repl, I want something I can invoke
@@ -32,5 +38,5 @@ To build a native binary, run the task `nativeBuild`, some notes:
 
 
 ## TODO
-- pick an http client etc and write the api client
-- come up with a way to build this into a nice binary
+- add a module system for prompt building
+- support some kind of first keyword like 'nocall' to cheaply test prompt generation
