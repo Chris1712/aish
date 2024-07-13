@@ -14,6 +14,8 @@ To build a native binary, run the task `nativeBuild`, some notes:
 - In ubuntu, you may find you need some additional files:
   - `It appears as though libz:.a is missing` -> `sudo apt install zlib1g-dev`
 - The binary will be output to `app/build/native/nativeCompile/aish`
+- Note that getting graal to work with ktor etc. took a little fiddling; see reflect-config.json 
+for some additional config that was necessary to fix runtime errors with the binary
 
 ## Installing
 `cp app/build/native/nativeCompile/aish /usr/local/bin/`
