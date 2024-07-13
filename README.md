@@ -4,7 +4,8 @@ A little binary that'll give your shell context to chatgpt, along with a questio
 It'll try to return a command that you can inspect and then run. 
 
 - Usage:
-  - `c help me get the sound from this video as an mp3`
+  - Basic example: `aish help me get the sound from this video as an mp3`
+  - We can prepend `nocall` to show us the prompt without calling out API
 
 ## Building
 Includes the normal gradle wrapper, so `./gradlew build` should work.
@@ -19,6 +20,7 @@ for some additional config that was necessary to fix runtime errors with the bin
 
 ## Installing
 `cp app/build/native/nativeCompile/aish /usr/local/bin/`
+`echo your-openai-api-key > ~/.aish/apikey`
 
 ## Costs
 gpt-4o cost $5 for 1M input tokens, $15 for 1M output tokens.
@@ -41,4 +43,3 @@ If we use 100 calls per day at 1000 tokens each that's 50 cents. Seems worthwhil
 
 ## TODO
 - add a module system for prompt building
-- support some kind of first keyword like 'nocall' to cheaply test prompt generation

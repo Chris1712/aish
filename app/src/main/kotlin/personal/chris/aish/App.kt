@@ -13,12 +13,20 @@ fun main(args: Array<String>) {
     val apiKey: String = File(apiKeyPath).readText().trim()
     logger.info { "API key: $apiKey" }
 
-    val query = args.joinToString() // The input query
-    val prompt = Prompter.prompt(query) // TODO, add additional context
-
-    runBlocking {
-        val response = OpenAIClient.callOpenAI(prompt, apiKey)
-        println(response)
+    if (args.size == 0) {
+        println("Usage: aish <query>")
+        return
+    } else if (args[0] == "nocall") {
+        val query = args.drop(1).joinToString(" ")
+        println("First arg was nocall, skipping API call. The prompt is:")
+        println(Prompter.prompt(query))
+        return
+    } else {
+        val query = args.joinToString(" ") // The input query
+        val prompt = Prompter.prompt(query)
+        runBlocking {
+            val response = OpenAIClient.callOpenAI(prompt, apiKey)
+            println(response)
+        }
     }
-
 }
