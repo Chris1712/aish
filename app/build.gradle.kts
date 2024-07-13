@@ -11,6 +11,8 @@ repositories {
 }
 
 dependencies {
+    implementation(libs.kotlin.logging.jvm)
+    implementation(libs.slf4j.simple)
 
     implementation(libs.ktor.client.core)
     implementation(libs.ktor.client.cio)

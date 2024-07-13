@@ -28,6 +28,7 @@ To build a native binary, run the task `nativeBuild`, some notes:
   - history
   - shell output?
   - extendable here
+  - clipboard?
 
 
 ## TODO

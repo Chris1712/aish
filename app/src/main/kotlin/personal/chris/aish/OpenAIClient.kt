@@ -1,5 +1,6 @@
 package personal.chris.aish
 
+import io.github.oshai.kotlinlogging.KotlinLogging
 import io.ktor.client.HttpClient
 import io.ktor.client.call.*
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
@@ -37,6 +38,8 @@ data class Choice(
     val finish_reason: String
 )
 
+private val logger = KotlinLogging.logger {}
+
 
 class OpenAIClient(private val apiKey: String) {
     private val client = HttpClient {
@@ -53,23 +56,19 @@ class OpenAIClient(private val apiKey: String) {
             temperature = 0.0
         )
 
+        logger.info { "Calling OpenAI with request: $request" }
         val response: HttpResponse = client.post("https://api.openai.com/v1/chat/completions") {
             header("Authorization", "Bearer $apiKey")
             contentType(ContentType.Application.Json)
             setBody(request)
         }
 
-        println(response.status)
-        println(response.bodyAsText())
+        val bodyStr = response.bodyAsText()
+        logger.info { "Response status: ${response.status}; body: $bodyStr" }
 
         if (response.status != HttpStatusCode.OK) {
-            return "Error calling API"
+            return "Error calling API; status: ${response.status}; body: $bodyStr"
         }
-
-
-
-
-        println(response)
 
         val openAIResponse: OpenAIResponse = response.body()
         return openAIResponse.choices.first().message.content

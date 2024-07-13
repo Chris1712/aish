@@ -1,7 +1,10 @@
 package personal.chris.aish
 
+import io.github.oshai.kotlinlogging.KotlinLogging
 import kotlinx.coroutines.runBlocking
 import java.io.File
+
+private val logger = KotlinLogging.logger {}
 
 class App {
     val apiKeyPath: String = System.getenv("HOME") + "/.aish/apikey"
@@ -9,9 +12,8 @@ class App {
 }
 
 fun main() {
-    println(App().apiKeyPath)
-    println(App().apiKey)
-
+    logger.info { "Reading key from path: ${App().apiKeyPath}" }
+    logger.info { "API key: ${App().apiKey}" }
     val client = OpenAIClient(App().apiKey)
 
     runBlocking {
