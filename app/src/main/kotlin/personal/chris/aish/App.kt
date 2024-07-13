@@ -6,20 +6,18 @@ import java.io.File
 
 private val logger = KotlinLogging.logger {}
 
-class App {
-    val apiKeyPath: String = System.getenv("HOME") + "/.aish/apikey"
-    val apiKey: String = File(apiKeyPath).readText().trim()
-}
-
 fun main(args: Array<String>) {
 
-    val prompt = args.joinToString()
-    logger.info { "Reading key from path: ${App().apiKeyPath}" }
-    logger.info { "API key: ${App().apiKey}" }
-    val client = OpenAIClient(App().apiKey)
+    val apiKeyPath: String = System.getenv("HOME") + "/.aish/apikey"
+    logger.info { "Reading key from path: $apiKeyPath" }
+    val apiKey: String = File(apiKeyPath).readText().trim()
+    logger.info { "API key: $apiKey" }
+
+    val query = args.joinToString() // The input query
+    val prompt = Prompter.prompt(query) // TODO, add additional context
 
     runBlocking {
-        val response = client.callOpenAI(prompt)
+        val response = OpenAIClient.callOpenAI(prompt, apiKey)
         println(response)
     }
 

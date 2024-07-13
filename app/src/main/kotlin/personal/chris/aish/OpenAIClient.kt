@@ -48,15 +48,15 @@ data class Usage(
 
 private val logger = KotlinLogging.logger {}
 
+object OpenAIClient {
 
-class OpenAIClient(private val apiKey: String) {
-    private val client = HttpClient {
-        install(ContentNegotiation) {
-            json(Json { ignoreUnknownKeys = true })
+    suspend fun callOpenAI(prompt: String, apiKey: String): String {
+        val client = HttpClient {
+            install(ContentNegotiation) {
+                json(Json { ignoreUnknownKeys = true })
+            }
         }
-    }
 
-    suspend fun callOpenAI(prompt: String): String {
         val request = OpenAIRequest(
             model = "gpt-4o",
             messages = listOf(Message("user", prompt)),

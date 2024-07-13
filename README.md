@@ -10,7 +10,7 @@ It'll try to return a command that you can inspect and then run.
 Includes the normal gradle wrapper, so `./gradlew build` should work.
 To build a native binary, run the task `nativeBuild`, some notes:
 - This requires JAVA_HOME to be set to a [graalvm installation](https://www.graalvm.org/latest/docs/getting-started/)
-  - So EG `JAVA_HOME=/opt/graalvm-jdk-21.0.3+7.1 ./gradlew nativeBuild`
+  - So EG `JAVA_HOME=/opt/graalvm-jdk-21.0.3+7.1 ./gradlew nativeCompile`
 - In ubuntu, you may find you need some additional files:
   - `It appears as though libz:.a is missing` -> `sudo apt install zlib1g-dev`
 - The binary will be output to `app/build/native/nativeCompile/aish`
