@@ -29,13 +29,21 @@ data class Message(
 data class OpenAIResponse(
     val id: String,
     val model: String,
-    val choices: List<Choice>
+    val choices: List<Choice>,
+    val usage: Usage
 )
 
 @Serializable
 data class Choice(
     val message: Message,
     val finish_reason: String
+)
+
+@Serializable
+data class Usage(
+    val prompt_tokens: Int,
+    val completion_tokens: Int,
+    val total_tokens: Int
 )
 
 private val logger = KotlinLogging.logger {}
@@ -52,7 +60,7 @@ class OpenAIClient(private val apiKey: String) {
         val request = OpenAIRequest(
             model = "gpt-4o",
             messages = listOf(Message("user", prompt)),
-            max_tokens = 100,
+            max_tokens = 1000,
             temperature = 0.0
         )
 
@@ -64,13 +72,17 @@ class OpenAIClient(private val apiKey: String) {
         }
 
         val bodyStr = response.bodyAsText()
-        logger.info { "Response status: ${response.status}; body: $bodyStr" }
+        logger.debug { "Response status: ${response.status}; body: $bodyStr" }
 
         if (response.status != HttpStatusCode.OK) {
             return "Error calling API; status: ${response.status}; body: $bodyStr"
         }
 
         val openAIResponse: OpenAIResponse = response.body()
+        val usage : Usage = openAIResponse.usage
+
+        logger.info { "Tokens used: (intput/output/total):  " +
+                "${usage.prompt_tokens} / ${usage.completion_tokens} / ${usage.total_tokens}" }
         return openAIResponse.choices.first().message.content
     }
 

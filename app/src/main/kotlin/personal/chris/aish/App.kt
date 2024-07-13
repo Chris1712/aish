@@ -11,13 +11,15 @@ class App {
     val apiKey: String = File(apiKeyPath).readText().trim()
 }
 
-fun main() {
+fun main(args: Array<String>) {
+
+    val prompt = args.joinToString()
     logger.info { "Reading key from path: ${App().apiKeyPath}" }
     logger.info { "API key: ${App().apiKey}" }
     val client = OpenAIClient(App().apiKey)
 
     runBlocking {
-        val response = client.callOpenAI("Tell me a joke.")
+        val response = client.callOpenAI(prompt)
         println(response)
     }
 
