@@ -39,6 +39,7 @@ fun main(args: Array<String>) {
             if (input == "y") {
                 val script = response!!.removePrefix("```sh").removeSuffix("```").trim()
                 logger.info { "Running script: $script" }
+                ShellTools.appendToHistory(script)
                 val process = ProcessBuilder("sh", "-c", script).inheritIO().start()
                 process.waitFor()
             }

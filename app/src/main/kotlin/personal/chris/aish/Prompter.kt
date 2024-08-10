@@ -25,7 +25,7 @@ object Prompter {
             User: "What is the capital of France"?
             You: Paris
             
-            The current shell is: ${shell()}
+            The current shell is: ${ShellTools.shell()}
             The current working directory is ${System.getProperty("user.dir")}
             The files in the current directory are: ${ls()}
              
@@ -40,9 +40,5 @@ object Prompter {
         val workingDirectory = System.getProperty("user.dir")
         logger.debug { "Working directory: $workingDirectory" }
         return File(workingDirectory).listFiles()?.map { it.name } ?: emptyList()
-    }
-
-    private fun shell(): String {
-        return System.getenv("SHELL") ?: "Unknown"
     }
 }
