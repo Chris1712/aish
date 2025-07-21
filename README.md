@@ -23,9 +23,9 @@ for some additional config that was necessary to fix runtime errors with the bin
 `echo your-openai-api-key > ~/.aish/apikey`
 
 ## Costs
-gpt-4o cost $5 for 1M input tokens, $15 for 1M output tokens.
-So 1000 input tokens is 1/2 cent.
-If we use 100 calls per day at 1000 tokens each that's 50 cents. Seems worthwhile!
+gpt-4o costs $2.50 for 1M input tokens, $10 for 1M output tokens.
+So 1000 input tokens is 1/4 cent.
+If we use 100 calls per day at 1000 tokens each that's 25 cents. Seems worthwhile!
 
 
 # Goals
