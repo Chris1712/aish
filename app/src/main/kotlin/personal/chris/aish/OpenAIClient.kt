@@ -15,8 +15,8 @@ import kotlinx.serialization.json.Json
 data class OpenAIRequest(
     val model: String,
     val messages: List<Message>,
-    val max_tokens: Int,
-    val temperature: Double
+    val max_completion_tokens: Int,
+    val reasoning_effort: String
 )
 
 @Serializable
@@ -58,10 +58,10 @@ object OpenAIClient {
         }
 
         val request = OpenAIRequest(
-            model = "gpt-4o",
+            model = "gpt-6-luna",
             messages = listOf(Message("user", prompt)),
-            max_tokens = 1000,
-            temperature = 0.0
+            max_completion_tokens = 1000,
+            reasoning_effort = "none"
         )
 
         logger.debug { "Calling OpenAI with request: $request" }
