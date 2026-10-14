@@ -8,15 +8,9 @@ It'll try to return a command that you can inspect and then run.
   - We can prepend `nocall` to show us the prompt without calling out API
 
 ## Building
-Includes the normal gradle wrapper, so `./gradlew build` should work.
-To build a native binary, run the task `nativeBuild`, some notes:
-- This requires JAVA_HOME to be set to a [graalvm installation](https://www.graalvm.org/latest/docs/getting-started/)
-  - So EG `JAVA_HOME=/opt/graalvm-jdk-21.0.3+7.1 ./gradlew nativeCompile`
-- In ubuntu, you may find you need some additional files:
-  - `It appears as though libz:.a is missing` -> `sudo apt install zlib1g-dev`
-- The binary will be output to `app/build/native/nativeCompile/aish`
-- Note that getting graal to work with ktor etc. took a little fiddling; see reflect-config.json 
-for some additional config that was necessary to fix runtime errors with the binary
+Run `./gradlew build` or `./gradlew nativebuild` (automatically downloads GraalVM 21).
+Native builds need a C compiler and zlib headers: `sudo apt install build-essential zlib1g-dev` on Ubuntu.
+The binary is `app/build/native/nativeCompile/aish`.
 
 ## Installing
 `cp app/build/native/nativeCompile/aish /usr/local/bin/`

@@ -50,6 +50,10 @@ tasks.named<Test>("test") {
 graalvmNative {
     binaries {
         named("main") {
+            javaLauncher.set(javaToolchains.launcherFor {
+                languageVersion.set(JavaLanguageVersion.of(21))
+                vendor.set(JvmVendorSpec.GRAAL_VM)
+            })
             mainClass.set("personal.chris.aish.AppKt")
             imageName.set("aish")
         }
